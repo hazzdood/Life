@@ -1,7 +1,6 @@
 <?php
 
 require './resources/php/data.php';
-require './resources/php/layout.php';
 require './resources/php/view.php';
 
 $locationName = 'start';
