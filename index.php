@@ -28,7 +28,7 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu <b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="./index.php?a=restart">Restart</a></li>
+								<li><a onclick="submit(false, 'reset')">Restart</a></li>
 								<li><a href="./index.php?a=switch-user">Change User</a></li>
 							</ul>
 						</li>
@@ -37,16 +37,17 @@
 			</div>
 		</nav>
 
-		<div class="content">
+		<div id="content" class="content">
 			<span class="title">Figure out a way to escape the place you are in</span><br>
 			<br>
 		</div>
 		<div class="input">
-			> <input type="text" class="textInput" name="input">
+			> <input type="text" class="textInput" name="input" placeholder="" autofocus onkeyup="submit(this);">
 		</div>
 	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> <!-- import jquery -->
+	<script src="./resources/js/main.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> <!-- import bootstrap js -->
 </body>
 </html>
