@@ -1,7 +1,6 @@
 <?php
 
 require './resources/php/data.php';
-require './resources/php/view.php';
 
 $locationName = 'start';
 $location     = null;
@@ -27,6 +26,8 @@ if (isset($_GET['action']))
 	}
 }
 
-echo getGameView($location);
+
+
+echo $history;
 
 ?>
