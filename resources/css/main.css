@@ -1,0 +1,14 @@
+body
+{
+	font-family: Georgia,Palatino,serif;
+}
+
+.title
+{
+	font-weight: 700;
+}
+
+.textInput
+{
+	width: calc(100% - 15px);
+}
