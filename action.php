@@ -28,6 +28,6 @@ if (isset($_GET['action']))
 	}
 }
 
-renderLayout(['content' => getGameView($location)]);
+echo getGameView($location);
 
 ?>
