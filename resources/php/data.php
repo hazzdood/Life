@@ -1,11 +1,35 @@
 <?php
+
+if ($_GET['value'] == 'reset' || $_GET['value'] == 'restart')
+{
+	$historyFilePath = realpath("./user.html"); // get the path to the file
+	$historyFile     = fopen($historyFilePath, "w+");     // open the file for overwriting and reading
+
+	fwrite($historyFile, "<span class='title'>Figure out a way to escape the place you are in</span><br>\n<br>\n\n");
+}
+elseif ($_GET['value'] == '')
+{
+	$historyFilePath = realpath("./user.html"); // get the path to the file
+	$historyFile     = fopen($historyFilePath, "r");      // open the file for append writing and reading
+}
+else
+{
+	$historyFilePath = realpath("./user.html"); // get the path to the file
+	$historyFile     = fopen($historyFilePath, "a+");     // open the file for append writing and reading
+
+	fwrite($historyFile, "> " . $_GET["value"] . "<br>\n");
+}
+
+rewind($historyFile);
+
+$history = fread($historyFile, filesize($historyFilePath)); // read the contest of the file
+
 $map =
 [
-	'start'                =>
+	'start'           =>
 	[
 		'name'        => 'start',
 		'description' => 'You are sitting by a babbling brook. A chimpanzee sits next to you polishing a tin whistle.',
-		'image'       => 'resources/img/brook.jpg',
 		'actions'     =>
 		[
 			'walk north'   => 'forest',
@@ -13,61 +37,14 @@ $map =
 		],
 	],
 
-	'brook-chimp-mad'      =>
+	'brook-chimp-mad' =>
 	[
 		'name'        => 'brook-chimp-mad',
 		'description' => 'You are sitting by a babbling brook. A chimpanzee with a tin whistle looks at you menacingly.',
-		'image'       => 'resources/img/chimp.jpg',
 		'actions'     =>
 		[
 			'walk north'   => 'forest',
 			'tickle chimp' => 'brook-chimp-very-mad',
-		],
-	],
-
-	'brook-chimp-very-mad' =>
-	[
-		'name'        => 'brook-chimp-very-mad',
-		'description' => 'The chimp screams at you then beets you to a red puddle leaking into the brook.',
-		'image'       => 'resources/img/chimp.jpg',
-		'actions'     =>
-		[
-			'restart' => 'start',
-		],
-	],
-
-	'forest'               =>
-	[
-		'name'        => 'forest',
-		'description' => 'You have come to a clearing in the forest. There is a faint odor of pomegranate in the air. You hear a whisper.',
-		'image'       => 'resources/img/forest.jpg',
-		'actions'     =>
-		[
-			'climb tree' => 'canopy',
-			'walk south' => 'start',
-		],
-	],
-
-	'canopy'               =>
-	[
-		'name'        => 'canopy',
-		'description' => 'You are high above the forest. Your arms are sore.',
-		'image'       => 'resources/img/canopy.jpg',
-		'actions'     =>
-		[
-			'climb down' => 'forest',
-			'jump down'  => 'forest_injured',
-		],
-	],
-
-	'forest_injured'       =>
-	[
-		'name'        => 'forest_injured',
-		'description' => 'Well that was a bit silly, you landed on your head and died.',
-		'image'       => 'resources/img/forest.jpg',
-		'actions'     =>
-		[
-			'restart' => 'start',
 		],
 	],
 ]

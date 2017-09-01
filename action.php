@@ -1,8 +1,6 @@
 <?php
 
 require './resources/php/data.php';
-require './resources/php/layout.php';
-require './resources/php/view.php';
 
 $locationName = 'start';
 $location     = null;
@@ -28,6 +26,6 @@ if (isset($_GET['action']))
 	}
 }
 
-renderLayout(['content' => getGameView($location)]);
+echo $history;
 
 ?>
