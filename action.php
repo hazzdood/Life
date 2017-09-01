@@ -26,8 +26,6 @@ if (isset($_GET['action']))
 	}
 }
 
-
-
 echo $history;
 
 ?>
