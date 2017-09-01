@@ -1,5 +1,7 @@
 function submit(textBox, value = '')
 {
+	delay = 5;
+
 	if (value != '')
 	{
 		get = { value: value };
@@ -7,7 +9,9 @@ function submit(textBox, value = '')
 		$.get("./action.php", get, function(data)
 		{
 			$(".content").html(data);
-		})
+		});
+
+		setTimeout(function () { window.scrollTo(0,document.body.scrollHeight) }, delay);
 	}
 	else
 	{
@@ -15,13 +19,14 @@ function submit(textBox, value = '')
 		{
 			get = { value: textBox.value };
 
-			console.log(get);
 			textBox.value = '';
 
 			$.get("./action.php", get, function(data)
 			{
 				$(".content").html(data);
-			})
+			});
+
+			setTimeout(function () { window.scrollTo(0,document.body.scrollHeight) }, delay);
 		}
 	}
 }
