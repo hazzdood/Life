@@ -2,6 +2,8 @@
 
 function createResponse($location, $action)
 {
+	global $map;
+
 	$locationName = 'start';
 	$location     = null;
 	$actionName   = null;
@@ -26,7 +28,7 @@ function createResponse($location, $action)
 		}
 	}
 
-	return $return;
+	return $location['description'] . '<br><br>';
 }
 
 ?>
