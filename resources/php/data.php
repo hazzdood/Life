@@ -1,46 +1,17 @@
 <?php
 
-if ($_GET['value'] == 'reset' || $_GET['value'] == 'restart')
+session_start(); // start a session to save the users data
+
+if ($_GET['value'] == 'reset' || $_GET['value'] == 'restart' || !isset($_SESSION['old'])) // is a restart was called or the session has just been created
 {
-	$dataFilePath = realpath("./user/data.json"); // get the path to the file
-	$dataFile     = fopen($dataFilePath, "w+");   // open the file for overwriting and reading
-
-	rewind($dataFile);
-	fwrite($dataFile, "{\n	\"location\": \"start\",\n	\"inventory\":\n	[\n		\"a low IQ\",\n	],\n}\n");
-
-	$data = json_decode("{\n	\"location\": \"start\",\n	\"inventory\":\n	[\n		\"a low IQ\",\n	],\n}\n", true); // decode the json data to an assoc array
-
-	$historyFilePath = realpath("./user/history.html"); // get the path to the file
-	$historyFile     = fopen($historyFilePath, "w+");   // open the file for overwriting and reading
-
-	fwrite($historyFile, "<span class='title'>Figure out a way to escape the place you are in</span><br>\n<br>\n\n");
+	$_SESSION['old']     = true;                                                                                       // remember that this session has been opened
+	$_SESSION['data']    = ["location" => "start", "inventory" => ["a low IQ"]];                                       // put in the default values for data
+	$_SESSION['history'] = "<span class='title'>Figure out a way to escape the place you are in</span><br>\n<br>\n\n"; // and history
 }
-elseif ($_GET['value'] == '')
+elseif ($_GET['value'] != '')                                                                                    // if a command was given
 {
-	$dataFilePath = realpath("./user/data.json");              // get the path to the file
-	$dataFile     = fopen($dataFilePath, "a+");                // open the file for overwriting and reading
-	$data         = fread($dataFile, filesize($dataFilePath)); // read the contest of the file
-	$data         = json_decode($data, true);                  // decode the json data to an assoc array
-
-	$historyFilePath = realpath("./user/history.html"); // get the path to the file
-	$historyFile     = fopen($historyFilePath, "r");    // open the file for append writing and reading
+	$_SESSION['history'] = $_SESSION['history'] . "> " . $_GET["value"] . "<br>\n"; // append it to the history
 }
-else
-{
-	$dataFilePath = realpath("./user/data.json");              // get the path to the file
-	$dataFile     = fopen($dataFilePath, "a+");                // open the file for overwriting and reading
-	$data         = fread($dataFile, filesize($dataFilePath)); // read the contest of the file
-	$data         = json_decode($data, true);                  // decode the json data to an assoc array
-
-	$historyFilePath = realpath("./user/history.html"); // get the path to the file
-	$historyFile     = fopen($historyFilePath, "a+");   // open the file for append writing and reading
-
-	fwrite($historyFile, "> " . $_GET["value"] . "<br>\n");
-}
-
-rewind($historyFile);
-
-$history = fread($historyFile, filesize($historyFilePath)); // read the contest of the file
 
 $map =
 [
