@@ -15,22 +15,11 @@ function createResponse($locationName, $actionName) // create a response for the
 		$location        = $map[$newLocationName];            // and new location to variables
 		$return          = $location['description'] . '<br><br>';           // return the new location description
 	}
-
-	$location = $map[$locationName];
-
-	if (isset($action))
+	elseif ($actionName == 'reset' || $actionName == 'restart')
 	{
-		$actionName = $action;
-
-		if (isset($location['actions'][$actionName]))
-		{
-			$newLocationName = $location['actions'][$actionName];
-
-			$location = $map[$newLocationName];
-		}
 	}
 
-	return $location['description'] . '<br><br>';
+	return $return;
 }
 
 ?>
