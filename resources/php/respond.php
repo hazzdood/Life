@@ -17,6 +17,11 @@ function createResponse($locationName, $actionName) // create a response for the
 	}
 	elseif ($actionName == 'reset' || $actionName == 'restart')
 	{
+		$return = '';
+	}
+	else                                                // if not
+	{
+		$return = 'Sorry, I don\'t understand "' . $actionName . '"<br><br>';
 	}
 
 	return $return;
