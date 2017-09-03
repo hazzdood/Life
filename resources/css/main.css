@@ -11,6 +11,7 @@ body
 .textInput
 {
 	width: calc(100% - 15px);
+
 	border: 0;
 	outline: 0;
 }

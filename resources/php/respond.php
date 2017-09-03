@@ -1,17 +1,19 @@
 <?php
 
-function createResponse($location, $action)
+function createResponse($locationName, $actionName) // create a response for the user based on their location, command and inventory
 {
-	global $map;
+	global $map; // give the function access to the map
 
-	$locationName = 'start';
-	$location     = null;
-	$actionName   = null;
-	$action       = null;
+	$locationName = 'start'; // set the default values for locationName
+	$location     = [];      // and location
 
-	if (isset($location))
+	$location = $map[$locationName]; // load the location into a variable
+
+	if (isset($location['actions'][$actionName])) // if the the command the user sent is understood
 	{
-		$locationName = $location;
+		$newLocationName = $location['actions'][$actionName]; // save the new location name
+		$location        = $map[$newLocationName];            // and new location to variables
+		$return          = $location['description'] . '<br><br>';           // return the new location description
 	}
 
 	$location = $map[$locationName];

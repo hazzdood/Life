@@ -1,8 +1,8 @@
 <?php
 
-session_start(); // start a session to save the users data
+session_start(); // start a session to save or load the users data
 
-if ($_GET['value'] == 'reset' || $_GET['value'] == 'restart' || !isset($_SESSION['old'])) // is a restart was called or the session has just been created
+if ($_GET['value'] == 'reset' || $_GET['value'] == 'restart' || !isset($_SESSION['old'])) // if a restart was called or the session has just been created
 {
 	session_unset();
 
@@ -15,6 +15,7 @@ elseif ($_GET['value'] != '')                                                   
 	$_SESSION['history'] = $_SESSION['history'] . "> " . $_GET["value"] . "<br>\n"; // append it to the history
 }
 
+// create the map
 $map =
 [
 	'start'           =>
@@ -39,4 +40,5 @@ $map =
 		],
 	],
 ]
+
 ?>

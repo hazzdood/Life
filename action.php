@@ -1,10 +1,10 @@
 <?php
 
-require './resources/php/data.php';
-require './resources/php/respond.php';
+require './resources/php/data.php';    // load the map and the users session
+require './resources/php/respond.php'; // load the response manager
 
-$location = 'start';
-$action   = '';
+$location = 'start'; // set the default values for the location
+$action   = '';      // and action
 
 if (isset($_GET['action']))
 {
