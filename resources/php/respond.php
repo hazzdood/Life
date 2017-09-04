@@ -1,6 +1,6 @@
 <?php
 
-function createResponse($locationName, $actionName) // create a response for the user based on their location, command and inventory
+function respond($locationName, $actionName) // create a response for the user based on their location, command and inventory
 {
 	global $map; // give the function access to the map
 
