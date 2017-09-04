@@ -1,16 +1,29 @@
 <?php
 
+$location = 'start'; // set the default values for the location
+$action   = '';      // and action
+
 session_start(); // start a session to save or load the users data
 
-if ($_GET['value'] == 'reset' || $_GET['value'] == 'restart' || !isset($_SESSION['old'])) // if a restart was called or the session has just been created
+if (isset($_GET['value'])) // if a command was submitted
+{
+	$action = $_GET['value']; // save it
+}
+
+if (isset($_SESSION['data']['location']))
+{
+	$location = $_SESSION['data']['location'];
+}
+
+if ($action == 'reset' || $action == 'restart' || !isset($_SESSION['old'])) // if a restart was called or the session has just been created
 {
 	session_unset();
 
-	$_SESSION['old']     = true;                                                                                       // remember that this session has been opened
-	$_SESSION['data']    = ["location" => "start", "inventory" => ["a low IQ"]];                                       // put in the default values for data
-	$_SESSION['history'] = "<span class='title'>Figure out a way to escape the place you are in</span><br>\n<br>\n\n"; // and history
+	$_SESSION['old']     = true;                                                                                                                                             // remember that this session has been opened
+	$_SESSION['data']    = ["location" => "start", "inventory" => ["a low IQ"]];                                                                                             // put in the default values for data
+	$_SESSION['history'] = "<span class='title'>Title :)</span><br><br>You are sitting by a babbling brook. A chimpanzee sits next to you polishing a tin whistle.<br><br>"; // and history
 }
-elseif ($_GET['value'] != '')                                                                                    // if a command was given
+elseif ($action != '')                                                                                                                                                 // if a command was given
 {
 	$_SESSION['history'] = $_SESSION['history'] . "> " . $_GET["value"] . "<br>\n"; // append it to the history
 }
