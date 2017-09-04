@@ -19,11 +19,11 @@ if ($action == 'reset' || $action == 'restart' || !isset($_SESSION['old'])) // i
 {
 	session_unset();
 
-	$_SESSION['old']     = true;                                                                                                                                             // remember that this session has been opened
-	$_SESSION['data']    = ["location" => "start", "inventory" => ["a low IQ"]];                                                                                             // put in the default values for data
-	$_SESSION['history'] = "<span class='title'>Title :)</span><br><br>You are sitting by a babbling brook. A chimpanzee sits next to you polishing a tin whistle.<br><br>"; // and history
+	$_SESSION['old']     = true;                                                                                            // remember that this session has been opened
+	$_SESSION['data']    = ["location" => "start"];                                                                         // put in the default values for data
+	$_SESSION['history'] = '<span class="title">' . $title . '</span><br><br>' . $map['start']['description'] . '<br><br>'; // and history
 }
-elseif ($action != '')                                                                                                                                                 // if a command was given
+elseif ($action != '')                                                                                                // if a command was given
 {
 	$_SESSION['history'] = $_SESSION['history'] . "> " . $_GET["value"] . "<br>\n"; // append it to the history
 }
