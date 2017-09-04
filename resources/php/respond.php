@@ -6,9 +6,11 @@ function respond($locationName, $actionName) // create a response for the user b
 
 	$location = $map[$locationName]; // load the location into a variable
 
-	if (isset($location['actions'][$actionName])) // if the the command the user sent is understood
+	$potentialNewLocationName = interpretCommand($location, $actionName);
+
+	if ($potentialNewLocationName != false) // if the the command the user sent is understood
 	{
-		$newLocationName              = $location['actions'][$actionName];     // save the new location name
+		$newLocationName              = $potentialNewLocationName;
 		$location                     = $map[$newLocationName];                // and new location to variables
 		$return                       = $location['description'] . '<br><br>'; // return the new location description
 		$_SESSION['data']['location'] = $newLocationName;
@@ -23,6 +25,20 @@ function respond($locationName, $actionName) // create a response for the user b
 	}
 
 	return $return; // return
+}
+
+function interpretCommand($location, $action) // interpret the users input
+{
+	$action = preg_replace('/ /', ')|(', $action);
+	foreach ($location['actions'] as $key => $value) // search through all actions for a location
+	{
+		if (preg_match('/(' . $action . ')/', $key)) // if the users input matches the current action
+		{
+			return $value; // return the new location name
+		}
+	}
+
+	return false; // if no match was found, ret0
 }
 
 ?>
