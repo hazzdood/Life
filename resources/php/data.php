@@ -1,6 +1,6 @@
 <?php
 
-$title = 'Fife. Just life.';
+$title = 'Life. Just life.';
 
 // create the map
 $map =
