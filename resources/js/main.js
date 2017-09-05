@@ -19,12 +19,12 @@ function submit(textBox, value = '')
 		{
 			get = { value: textBox.value };
 
-			textBox.value = '';
-
 			$.get("./action.php", get, function(data)
 			{
 				$(".content").html(data);
 			});
+
+			textBox.value = '';
 
 			setTimeout(function () { window.scrollTo(0,document.body.scrollHeight) }, delay);
 		}
