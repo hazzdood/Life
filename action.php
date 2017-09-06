@@ -8,7 +8,6 @@ if ($action != '') // if an action was sent from the user
 	$_SESSION['history'] = $_SESSION['history'] . respond($location, $action); // create a response and append it to the history
 }
 
-
 echo $_SESSION['history']; // print the history
 
 ?>

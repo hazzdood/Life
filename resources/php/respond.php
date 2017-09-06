@@ -6,16 +6,16 @@ function respond($locationName, $actionName) // create a response for the user b
 
 	$location = $map[$locationName]; // load the location into a variable
 
-	$potentialNewLocationName = interpretCommand($location, $actionName);
+	$potentialNewLocationName = interpretCommand($location, $actionName); // try to interpret the command and save the output
 
 	if ($potentialNewLocationName != false) // if the the command the user sent is understood
 	{
-		$newLocationName              = $potentialNewLocationName;
-		$location                     = $map[$newLocationName];                // and new location to variables
-		$return                       = $location['description'] . '<br><br>'; // return the new location description
-		$_SESSION['data']['location'] = $newLocationName;
+		$newLocationName              = $potentialNewLocationName;             // save it
+		$location                     = $map[$newLocationName];                // and the new new location to variables
+		$return                       = $location['description'] . '<br><br>'; // then return the new location description
+		$_SESSION['data']['location'] = $newLocationName;                      // and save the new location to the users session
 	}
-	elseif ($actionName == 'reset' || $actionName == 'restart') // if a reset was requested
+	elseif ($actionName == 'reset' || $actionName == 'restart')          // if a reset was requested
 	{
 		$return = ''; // don't return anything
 	}
@@ -29,10 +29,11 @@ function respond($locationName, $actionName) // create a response for the user b
 
 function interpretCommand($location, $action) // interpret the users input
 {
-	$action = preg_replace('/ /', ')|(', $action);
+	$action = preg_replace('/ /', ')|(', $action); // separate the command into words
+
 	foreach ($location['actions'] as $key => $value) // search through all actions for a location
 	{
-		if (preg_match('/(' . $action . ')/', $key)) // if the users input matches the current action
+		if (preg_match('/(' . $action . ')/', $key)) // if any of the words in the uses command are found in the current action
 		{
 			return $value; // return the new location name
 		}
