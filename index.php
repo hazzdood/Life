@@ -1,7 +1,13 @@
+<?php
+
+require './resources/php/data.php';
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Life. Just life.</title>
+	<title><?php echo $title; ?></title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> <!-- import bootstrap css -->
 	<link rel="stylesheet" href="./resources/css/main.css">
 </head>
@@ -17,7 +23,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a href="#" class="navbar-brand">Figure out a way to escape the place you are in</a>
+					<a href="#" class="navbar-brand"><?php echo $title; ?></a>
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
@@ -35,10 +41,10 @@
 				</div><!-- /.navbar-collapse -->
 			</div>
 		</nav>
+	</div>
 
+	<div class="container" style="width: 706px;">
 		<span id="content" class="content">
-			<span class="title">Figure out a way to escape the place you are in</span><br>
-			<br>
 		</span>
 		<span class="input">
 			> <input type="text" class="textInput" name="command" placeholder="" autofocus onkeyup="submit(this);">

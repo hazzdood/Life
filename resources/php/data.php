@@ -1,6 +1,6 @@
 <?php
 
-$title = 'Fife. Just life.';
+$title = 'Life. Just life.';
 
 // create the map
 $map =
@@ -8,7 +8,25 @@ $map =
 	'start'              =>
 	[
 		'name'        => 'start',
-		'description' => 'You get up in the morning, it\'s a school day. do you want to take the train or ride?',
+		'description' => 'You get up in the morning, it\'s a school day. Can you be bothered going to school?',
+		'actions'     =>
+		[
+			'yes sure okay ok yee yeah fine' => 'home',
+			'no nah nope'                    => 'just-no',
+		],
+	],
+
+	'just-no'            =>
+	[
+		'name'        => 'just-no',
+		'description' => 'Ok then, have a nice day :)<br>(restart)',
+		'actions'     => [],
+	],
+
+	'home'               =>
+	[
+		'name'        => 'home',
+		'description' => 'Alright then, do you want to take the train or ride?',
 		'actions'     =>
 		[
 			'ride bike' => 'helmet',
@@ -22,8 +40,8 @@ $map =
 		'description' => 'You get your bike from the garage. Do you want to get your helmet?',
 		'actions'     =>
 		[
-			'yes yeah' => 'fall-helmet',
-			'no nah'   => 'fall-no-helmet',
+			'yes sure okay ok yee yeah fine' => 'fall-helmet',
+			'no nah nope nope'               => 'fall-no-helmet',
 		],
 	],
 
@@ -40,8 +58,8 @@ $map =
 		'description' => 'You are riding and try to jump over the curb, crash your bike and fall on your head, but lucky you are wearing a helmet so you are fine. You arrive at school and ride up to the bike rack. Should you lock up your bike?',
 		'actions'     =>
 		[
-			'yes yeah' => 'school-bike',
-			'no nah'   => 'school-bike-stolen',
+			'yes sure okay ok yee yeah fine' => 'school-bike',
+			'no nah nope'                    => 'school-bike-stolen',
 		],
 	],
 
@@ -52,7 +70,7 @@ $map =
 		'actions'     => [],
 	],
 
-	'school-bike'             =>
+	'school-bike'        =>
 	[
 		'name'        => 'school-bike',
 		'description' => 'You go to class, school is particularly boring today but you get through it. You go get your bike, ride home, have dinner and go to bed. When you wake up in the morning it\'s a school day. do you want to take the train or ride?',
@@ -69,8 +87,8 @@ $map =
 		'description' => 'You go to the train, but it\'s running fifteen minuets late. Do you want to go home and ride?',
 		'actions'     =>
 		[
-			'no nah train'       => 'raining',
-			'yes yeah ride bike' => 'train-bike',
+			'no nah nope train'                        => 'raining',
+			'yes sure okay ok yee yeah fine ride bike' => 'train-bike',
 		],
 	],
 
@@ -80,8 +98,8 @@ $map =
 		'description' => 'You go home and get your bike from the garage. Do you want to get your helmet?',
 		'actions'     =>
 		[
-			'yes yeah' => 'fall-helmet',
-			'no nah'   => 'fall-no-helmet',
+			'yes sure okay ok yee yeah fine' => 'fall-helmet',
+			'no nah nope'                    => 'fall-no-helmet',
 		],
 	],
 
@@ -110,7 +128,7 @@ $map =
 	'school-on-time'     =>
 	[
 		'name'        => 'school-on-time',
-		'description' => 'You take the short way and get absolutely soaked but you change into some spare cloths and get on with the day. You go home, make dinner, and go to bed. When you wake up in the morning it\'s a school day. do you want to take the train or ride?',
+		'description' => 'You take the short way and get absolutely soaked but you change into some spare clothes and get on with the day. You go home, make dinner, and go to bed. When you wake up in the morning it\'s a school day. do you want to take the train or ride?',
 		'actions'     =>
 		[
 			'ride bike' => 'helmet',
