@@ -1,6 +1,6 @@
 <?php
 
-require './map.php'; // load the map
+require './resources/php/map.php'; // load the map
 
 $title = 'Life. Just life.'; // set the title
 
