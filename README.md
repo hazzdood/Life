@@ -1,1 +1,5 @@
-# figure out a way to escape the place you are in
+# Life. Just life
+
+This a game I am working on for my VCE computing unit 2
+
+(7/9/17)
