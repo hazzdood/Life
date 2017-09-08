@@ -9,8 +9,8 @@ $map =
 		'description' => 'You get up in the morning, it\'s a school day. Can you be bothered going to school?',
 		'actions'     =>
 		[
-			'yes sure okay ok yee yeah fine' => 'home',
-			'no nah nope'                    => 'just-no',
+			'yes sure okay ok yee yeah fine guess' => 'home',
+			'no nah can\'t nope'                    => 'just-no',
 		],
 	],
 
@@ -27,7 +27,7 @@ $map =
 		'description' => 'Alright then, do you want to take the train or ride?',
 		'actions'     =>
 		[
-			'ride bike' => 'helmet',
+			'ride bike bicycle' => 'helmet',
 			'train'     => 'train-late',
 		],
 	],
@@ -38,8 +38,8 @@ $map =
 		'description' => 'You get your bike from the garage. Do you want to get your helmet?',
 		'actions'     =>
 		[
-			'yes sure okay ok yee yeah fine' => 'fall-helmet',
-			'no nah nope nope'               => 'fall-no-helmet',
+			'yes sure okay ok yee yeah fine guess' => 'fall-helmet',
+			'no nah can\'t nope nope'               => 'fall-no-helmet',
 		],
 	],
 
@@ -56,8 +56,8 @@ $map =
 		'description' => 'You are riding and try to jump over the curb, crash your bike and fall on your head, but lucky you are wearing a helmet so you are fine. You arrive at school and ride up to the bike rack. Should you lock up your bike?',
 		'actions'     =>
 		[
-			'yes sure okay ok yee yeah fine' => 'school-bike',
-			'no nah nope'                    => 'school-bike-stolen',
+			'yes sure okay ok yee yeah fine guess' => 'school-bike',
+			'no nah can\'t nope'                    => 'school-bike-stolen',
 		],
 	],
 
@@ -85,8 +85,8 @@ $map =
 		'description' => 'You go to the train, but it\'s running fifteen minuets late. Do you want to go home and ride?',
 		'actions'     =>
 		[
-			'no nah nope train'                        => 'raining',
-			'yes sure okay ok yee yeah fine ride bike' => 'train-bike',
+			'no nah can\'t nope train'                        => 'raining',
+			'yes sure okay ok yee yeah fine guess ride bike' => 'train-bike',
 		],
 	],
 
@@ -96,8 +96,8 @@ $map =
 		'description' => 'You go home and get your bike from the garage. Do you want to get your helmet?',
 		'actions'     =>
 		[
-			'yes sure okay ok yee yeah fine' => 'fall-helmet',
-			'no nah nope'                    => 'fall-no-helmet',
+			'yes sure okay ok yee yeah fine guess' => 'fall-helmet',
+			'no nah can\'t nope'                    => 'fall-no-helmet',
 		],
 	],
 

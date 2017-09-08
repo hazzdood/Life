@@ -29,11 +29,11 @@ function respond($locationName, $actionName) // create a response for the user b
 
 function interpretCommand($location, $action) // interpret the users input
 {
-	$action = preg_replace('/ /', ')|(', $action); // separate the command into words
+	$action = '/(' . preg_replace('/ /', ')|(', $action) . ')/'; // separate the command into words
 
 	foreach ($location['actions'] as $key => $value) // search through all actions for a location
 	{
-		if (preg_match('/(' . $action . ')/', $key)) // if any of the words in the uses command are found in the current action
+		if (preg_match($action, $key)) // if any of the words in the uses command are found in the current action
 		{
 			return $value; // return the new location name
 		}
